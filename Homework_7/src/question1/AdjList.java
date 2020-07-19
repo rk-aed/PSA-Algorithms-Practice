@@ -43,6 +43,8 @@ public class AdjList {
         E++;
         adj[v].add(w);
         adj[w].add(v);
+        
+        
     }
 
 
