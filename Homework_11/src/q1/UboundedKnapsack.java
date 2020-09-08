@@ -16,8 +16,10 @@ private static int unboundedKnapsack(int W, int n,
 				dp[i] = max(dp[i], dp[i - wt[j]] + 
 							val[j]); 
 			} 
-		} 
+		}
+		printDP(dp);
 	} 
+	printDP(dp);
 
 	return dp[W]; 
 } 
@@ -29,7 +31,7 @@ static void printDP(int dp[]) {
 	System.out.println(" "+dp.length);
 }
 public static void main(String[] args) { 
-	int W = 36; 
+	int W = 24; 
 	int val[] = {4, 5, 10, 11, 12}; 
 	int wt[] = {3, 4, 7,8,9}; 
 	int n = val.length; 

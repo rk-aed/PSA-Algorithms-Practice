@@ -1,5 +1,7 @@
 package q3;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
 // Reference from https://github.com/mission-peace/interview/blob/master/src/com/interview/string/RabinKarpSearch.java
 
 
@@ -19,6 +21,8 @@ public class RabinKarpSearch {
                 textHash = recalculateHash(text, i - 1, i + m - 1, textHash, m);
             }
         }
+        
+        
         return -1;
     }
     
