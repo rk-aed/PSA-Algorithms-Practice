@@ -1,5 +1,7 @@
 package dynamicProgramming;
 
+import java.util.ArrayList;
+
 public class Practice {
 	
 	static int temp;
@@ -147,6 +149,136 @@ public class Practice {
 			return false;
 	}
 	
+	
+    // ############################### Count no. of subset sum  ################	
+	
+	
+	private static int countSumPartition(int [] arr, int sum) {
+		
+		int[][] t = new int[arr.length+1][sum+1];
+		
+		
+		// 1. Initialize
+		for(int i = 0; i <= arr.length; i++)
+			t[i][0] = 1;
+			
+			
+		for(int i = 0; i <= sum; i++)
+			t[1][sum] = 0;
+		
+		
+		
+		// 2. Iterate
+		for(int i = 1; i <= arr.length; i++)
+			for(int j = 1; j <= sum; j++)
+			{
+				if(arr[i-1] <= j) {
+					
+					t[i][j] = t[i-1][j - arr[i-1]] + t[i-1][j];
+				}
+				else {
+					
+					t[i][j] = t[i-1][j];
+					
+				}
+			}	
+		
+		
+		
+		
+		
+		return t[arr.length][sum];
+	}
+	
+	
+    // ############################### Minimum Subset sum difference  ################	
+	
+	private static int minSubsetSumDiff(int[] arr) {
+		// we need to find two subsets whose difference is minimum...
+		// subset 1 - subset 2 = diff --- 1
+		// subset 1 + subset 2 = sum ---  2 
+		// 2 subset 1 = diff + sum; that is also subset = (diff + sum) / 2
+		// Range of possible values -> 0 to sum
+			
+		int sum = 0;
+		for(int i = 0; i < arr.length; i++) {
+			sum += arr[i];
+		}
+		System.out.println(sum);
+		int halfway = sum/2;
+		
+		ArrayList<Integer> possibleValues = new ArrayList<Integer>();
+		
+		for(int i = 1; i < halfway; i++) {
+			if(subsetSum(arr, i, arr.length)) {
+					possibleValues.add(i);
+			}
+		}
+		
+		System.out.println("possibleValues "+possibleValues);
+		int min = Integer.MAX_VALUE;
+		// subset 2 =  subset 1 + diff
+		// subset 1 + diff - subset 1 = diff
+		
+		for(int i : possibleValues) {
+				if(min > i)
+						min = i;
+		}
+		return min;
+	}
+
+	
+    // ############################### Count the number of subset with a given difference  ################	
+		
+	private static int numberSubsetGivenDiff(int[] arr, int diff) {
+		
+		// we need to find two subsets whose difference is minimum...
+				// subset 1 - subset 2 = diff --- 1
+				// subset 1 + subset 2 = sum ---  2 
+				// 2 subset 1 = diff + sum; that is also subset = (diff + sum) / 2
+		int sum = 0;
+	    for(int i = 0; i < arr.length; i++)
+	    	sum += arr[i];
+		
+		int subsetValue  = (diff + sum) / 2;
+		
+		System.out.println(subsetValue);
+		int[][] t = new int[arr.length + 1][subsetValue+1];
+		
+		// Initialization
+				
+		for(int i = 0; i <= arr.length; i++)
+			t[i][0] = 1;
+		
+		for(int i = 1; i <= subsetValue; i++)
+			t[0][i] = 0;
+		
+		// Iterator
+		
+		for(int i = 1; i <= arr.length; i++) {
+			for(int j = 1; j <= subsetValue; j++) {
+				if(arr[i-1] <= j)
+					t[i][j] = t[i-1][j - arr[i-1]] + t[i-1][j];
+				else 
+					t[i][j] = t[i-1][j];
+			}
+		}
+		
+		printMat(t);
+		
+		return countSumPartition(arr, subsetValue);
+		
+		// return t[arr.length][subsetValue];
+	}	
+	
+	
+	// ################################### Unbounded Knapsack & Rod Cutting problem #########################
+	
+	
+
+
+	
+	
 	public static void main(String[] args) {
 /*
 		int v[] = { 20, 5, 10, 40, 15, 25 };
@@ -161,8 +293,17 @@ public class Practice {
 		int w1[] = {  5 , 5 , 10 , 12,12,434,567,2345,67 };
 		System.out.println("Answer : "+subsetSum(w1,  446  , 9));		
 		System.out.println("Answer : "+ equalSumPartition(w1, w1.length));
+	
+		int w1[] = {  1,5,5,11 ,25,13,34,16,27,25};
+		int arr[] = {1,1,1,1};
+		System.out.println("Answer : "+countSumPartition(arr, 1));		
 		
 */	
+			
+		int w1[] = {1, 6, 11, 5};
+		int arr[] = {1,1,1,1};
+		System.out.println("Answer : "+minSubsetSumDiff(w1));		
+		
 		
 		
 		
