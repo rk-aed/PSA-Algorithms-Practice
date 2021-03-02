@@ -274,7 +274,27 @@ public class Practice {
 	
 	// ################################### Unbounded Knapsack & Rod Cutting problem #########################
 	
+	private static int unboundedKnapsack(int[] w,int[] val, int W) {
+		int len = w.length;
+		int[][] t = new int[len+1][W+1];
+ 		
 	
+		
+		// Iterate
+		
+		for(int i = 1; i < len+1; i++) {
+			for(int j = 1; j < W+1; j++) {
+				if(w[i-1] <= j) 
+					t[i][j] = Math.max(val[i-1]+t[i][j-w[i-1]], t[i-1][j]);
+				else 
+					t[i][j] = t[i-1][j];
+			}
+		}
+		
+		
+		return t[len][W];
+		
+	}
 
 
 	
@@ -302,13 +322,15 @@ public class Practice {
 			
 		int w1[] = {1, 6, 11, 5};
 		int arr[] = {1,1,1,1};
-		System.out.println("Answer : "+minSubsetSumDiff(w1));		
+	//	System.out.println("Answer : "+minSubsetSumDiff(w1));		
 		
 		
 		
 		
-		
-		
+        int W = 100;
+        int val[] = {10, 30, 20};
+        int wt[] = {5, 10, 15};
+        System.out.println(unboundedKnapsack(wt,val, W));
 		
 		
 		
