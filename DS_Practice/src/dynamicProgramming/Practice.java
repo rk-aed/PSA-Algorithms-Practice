@@ -300,8 +300,8 @@ public class Practice {
 	
 	
 	public static void main(String[] args) {
-/*
-		int v[] = { 20, 5, 10, 40, 15, 25 };
+
+		/*		int v[] = { 20, 5, 10, 40, 15, 25 };
 		int w[] = {  1, 2,  3,  8,  7, 4 };
 		int W = 10;
 		int n = 6;
@@ -313,19 +313,18 @@ public class Practice {
 		int w1[] = {  5 , 5 , 10 , 12,12,434,567,2345,67 };
 		System.out.println("Answer : "+subsetSum(w1,  446  , 9));		
 		System.out.println("Answer : "+ equalSumPartition(w1, w1.length));
-	
-		int w1[] = {  1,5,5,11 ,25,13,34,16,27,25};
-		int arr[] = {1,1,1,1};
-		System.out.println("Answer : "+countSumPartition(arr, 1));		
+	*/		
+	//	int w1[] = {  1,5,5,11 ,25,13,34,16,27,25};
+		//int arr[] = {1,1,1,1};
+		//System.out.println("Answer : "+countSumPartition(arr, 1));		
 		
-*/	
-			
+		
 		int w1[] = {1, 6, 11, 5};
 		int arr[] = {1,1,1,1};
-	//	System.out.println("Answer : "+minSubsetSumDiff(w1));		
+		System.out.println("Answer : "+minSubsetSumDiff(w1));		
 		
 		
-		
+		/*
 		
         int W = 100;
         int val[] = {10, 30, 20};
@@ -334,7 +333,7 @@ public class Practice {
 		
 		
 		
-		
+*/			
 		
 		
 		
